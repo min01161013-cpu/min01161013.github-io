@@ -1,0 +1,955 @@
+/* ==========================================================
+   WIKIPEDIA PORTAL - REPLICA DESIGN SYSTEM & STYLESHEET
+   ========================================================== */
+
+:root {
+  --color-base: #202122;
+  --color-base-fixed: #202122;
+  --color-emphasized: #101418;
+  --color-subtle: #54595d;
+  --color-muted: #72777d;
+  --color-inverted: #ffffff;
+  
+  --color-progressive: #3366cc;
+  --color-progressive-hover: #3056a9;
+  --color-progressive-active: #233566;
+  --color-progressive-focus: #3366cc;
+  
+  --bg-color-base: #ffffff;
+  --bg-color-interactive-subtle: #f8f9fa;
+  --bg-color-interactive-hover: #eaecf0;
+  --bg-color-interactive-active: #dadde3;
+  --bg-card: #ffffff;
+  
+  --border-color-base: #a2a9b1;
+  --border-color-subtle: #c8ccd1;
+  --border-color-muted: #dadde3;
+  --border-radius-base: 2px;
+  --border-radius-card: 6px;
+  
+  --font-serif: "Linux Libertine", "Noto Serif KR", Georgia, "Times New Roman", Times, serif;
+  --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
+  --color-base: #eaecf0;
+  --color-base-fixed: #ffffff;
+  --color-emphasized: #f8f9fa;
+  --color-subtle: #a2a9b1;
+  --color-muted: #72777d;
+  --color-inverted: #101418;
+  
+  --color-progressive: #6485d1;
+  --color-progressive-hover: #88a3e8;
+  --color-progressive-active: #a6bbf5;
+  --color-progressive-focus: #6485d1;
+  
+  --bg-color-base: #101418;
+  --bg-color-interactive-subtle: #1c2128;
+  --bg-color-interactive-hover: #272d37;
+  --bg-color-interactive-active: #323a46;
+  --bg-card: #181d24;
+  
+  --border-color-base: #54595d;
+  --border-color-subtle: #3a4149;
+  --border-color-muted: #2d333b;
+  
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* System dark mode preference fallback */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-base: #eaecf0;
+    --color-base-fixed: #ffffff;
+    --color-emphasized: #f8f9fa;
+    --color-subtle: #a2a9b1;
+    --color-muted: #72777d;
+    --color-inverted: #101418;
+    
+    --color-progressive: #6485d1;
+    --color-progressive-hover: #88a3e8;
+    --color-progressive-active: #a6bbf5;
+    --color-progressive-focus: #6485d1;
+    
+    --bg-color-base: #101418;
+    --bg-color-interactive-subtle: #1c2128;
+    --bg-color-interactive-hover: #272d37;
+    --bg-color-interactive-active: #323a46;
+    --bg-card: #181d24;
+    
+    --border-color-base: #54595d;
+    --border-color-subtle: #3a4149;
+    --border-color-muted: #2d333b;
+    
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Base resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--color-base);
+  background-color: var(--bg-color-base);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-progressive);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-progressive-hover);
+}
+
+/* ==========================================================
+   SPRITE ICONS (Exact Wikipedia mapping)
+   ========================================================== */
+.sprite {
+  background-image: url('assets/sprite.svg');
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.svg-Commons-logo_sister { background-position: 0 0; width: 47px; height: 47px; }
+.svg-MediaWiki-logo_sister { background-position: 0 -47px; width: 42px; height: 42px; }
+.svg-Meta-Wiki-logo_sister { background-position: 0 -89px; width: 37px; height: 37px; }
+.svg-Wikibooks-logo_sister { background-position: 0 -126px; width: 37px; height: 37px; }
+.svg-Wikidata-logo_sister { background-position: 0 -163px; width: 49px; height: 49px; }
+.svg-Wikifunctions-logo_sister { background-position: 0 -212px; width: 50px; height: 50px; }
+.svg-Wikimedia-logo_black { background-position: 0 -262px; width: 42px; height: 42px; }
+.svg-Wikipedia_wordmark { background-position: 0 -304px; width: 176px; height: 32px; text-indent: -9999px; }
+.svg-Wikiquote-logo_sister { background-position: 0 -336px; width: 42px; height: 42px; }
+.svg-Wikisource-logo_sister { background-position: 0 -378px; width: 39px; height: 39px; }
+.svg-Wikispecies-logo_sister { background-position: 0 -417px; width: 42px; height: 42px; }
+.svg-Wikiversity-logo_sister { background-position: 0 -459px; width: 43px; height: 37px; }
+.svg-Wikivoyage-logo_sister { background-position: 0 -496px; width: 36px; height: 36px; }
+.svg-Wiktionary-logo_sister { background-position: 0 -532px; width: 37px; height: 37px; }
+.svg-arrow-down { background-position: 0 -569px; width: 12px; height: 8px; }
+.svg-arrow-down-blue { background-position: 0 -577px; width: 14px; height: 14px; }
+.svg-badge_google_play_store { background-position: 0 -591px; width: 124px; height: 38px; text-indent: -9999px; }
+.svg-badge_ios_app_store { background-position: 0 -629px; width: 110px; height: 38px; text-indent: -9999px; }
+.svg-language-icon { background-position: 0 -667px; width: 22px; height: 22px; }
+.svg-search-icon { background-position: 0 -747px; width: 22px; height: 22px; filter: brightness(0) invert(1); }
+.svg-wikipedia_app_tile { background-position: 0 -769px; width: 42px; height: 42px; }
+
+/* In dark mode, invert black icons */
+[data-theme="dark"] .svg-Wikimedia-logo_black,
+[data-theme="dark"] .svg-Wikipedia_wordmark {
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .svg-Wikimedia-logo_black,
+  :root:not([data-theme="light"]) .svg-Wikipedia_wordmark {
+    filter: invert(1);
+  }
+}
+
+/* ==========================================================
+   TOP BAR (Minimal modern navigation control)
+   ========================================================== */
+.top-nav-bar {
+  width: 100%;
+  padding: 1.2rem 2.4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-nav-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-subtle);
+  background-color: var(--bg-color-interactive-subtle);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color-muted);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #00af89;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.top-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--bg-color-interactive-subtle);
+  border: 1px solid var(--border-color-subtle);
+  color: var(--color-base);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-base);
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.top-nav-btn:hover {
+  background: var(--bg-color-interactive-hover);
+  border-color: var(--border-color-base);
+}
+
+.sun-icon { display: none; }
+.moon-icon { display: block; }
+
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sun-icon { display: block; }
+  :root:not([data-theme="light"]) .moon-icon { display: none; }
+}
+
+/* ==========================================================
+   MAIN CONTENT
+   ========================================================== */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+  text-align: center;
+}
+
+/* Central Title & Slogan */
+.central-textlogo {
+  margin: 1.5rem auto 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.central-title {
+  margin: 0;
+  line-height: 1;
+}
+
+.localized-slogan {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  color: var(--color-base);
+  margin-top: 0.6rem;
+}
+
+/* ==========================================================
+   CENTRAL FEATURED GLOBE & 10 LANGUAGES
+   ========================================================== */
+.central-featured {
+  position: relative;
+  width: 580px;
+  height: 330px;
+  max-width: 100%;
+  margin: 2rem auto 2.5rem;
+}
+
+/* Center globe logo */
+.central-featured-logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 183px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.central-featured-logo {
+  width: 200px;
+  height: 183px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06));
+}
+
+.central-featured:hover .central-featured-logo {
+  transform: scale(1.02);
+}
+
+/* Language nodes */
+.central-featured-lang {
+  position: absolute;
+  width: 16rem;
+  z-index: 2;
+}
+
+.central-featured-lang .link-box {
+  display: block;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+}
+
+.central-featured-lang .link-box strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-progressive);
+  line-height: 1.25;
+}
+
+.central-featured-lang .link-box small {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--color-subtle);
+  line-height: 1.3;
+}
+
+.central-featured-lang .link-box:hover {
+  text-decoration: none;
+  background-color: var(--bg-color-interactive-hover);
+  transform: translateY(-2px);
+}
+
+.central-featured-lang .link-box:hover strong {
+  text-decoration: underline;
+  color: var(--color-progressive-hover);
+}
+
+/* Exact coordinate positioning around the globe matching Wikipedia */
+/* Left side: text-align right */
+.lang1 { top: 2%; right: 58%; text-align: right; }
+.lang3 { top: 22%; right: 67%; text-align: right; }
+.lang5 { top: 43%; right: 70%; text-align: right; }
+.lang7 { top: 64%; right: 67%; text-align: right; }
+.lang9 { top: 84%; right: 58%; text-align: right; }
+
+/* Right side: text-align left */
+.lang2 { top: 2%; left: 58%; text-align: left; }
+.lang4 { top: 22%; left: 67%; text-align: left; }
+.lang6 { top: 43%; left: 70%; text-align: left; }
+.lang8 { top: 64%; left: 67%; text-align: left; }
+.lang10 { top: 84%; left: 58%; text-align: left; }
+
+/* ==========================================================
+   SEARCH BAR & LANGUAGE PICKER
+   ========================================================== */
+.search-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 1.2rem auto 2.2rem;
+  position: relative;
+}
+
+.search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--color-progressive);
+  box-shadow: 0 0 0 1px var(--color-progressive);
+}
+
+#searchInput {
+  flex: 1;
+  height: 4.4rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 1.4rem;
+  font-size: 1.6rem;
+  color: var(--color-base);
+  font-family: inherit;
+}
+
+#searchInput::placeholder {
+  color: var(--color-muted);
+}
+
+/* Language selector button/dropdown inside input */
+.search-lang-select-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem 0 0.6rem;
+  height: 3.2rem;
+  border-left: 1px solid var(--border-color-subtle);
+  margin-right: 0.4rem;
+}
+
+#searchLanguage {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-subtle);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding-right: 1.6rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.select-arrow-icon {
+  position: absolute;
+  right: 0.8rem;
+  pointer-events: none;
+}
+
+/* Progressive blue search button */
+.pure-button-primary-progressive {
+  width: 4.8rem;
+  height: 4.4rem;
+  background-color: var(--color-progressive);
+  border: none;
+  border-top-right-radius: var(--border-radius-base);
+  border-bottom-right-radius: var(--border-radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.pure-button-primary-progressive:hover {
+  background-color: var(--color-progressive-hover);
+}
+
+.pure-button-primary-progressive:active {
+  background-color: var(--color-progressive-active);
+}
+
+/* Live Search Suggestions Popover */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+  box-shadow: var(--shadow-popover);
+  z-index: 1000;
+  max-height: 380px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.4rem;
+  text-decoration: none;
+  color: var(--color-base);
+  border-bottom: 1px solid var(--border-color-muted);
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item.selected {
+  background-color: var(--bg-color-interactive-hover);
+  text-decoration: none;
+}
+
+.suggestion-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+  object-fit: cover;
+  margin-right: 1.2rem;
+  background-color: var(--bg-color-interactive-subtle);
+  flex-shrink: 0;
+}
+
+.suggestion-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestion-title {
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: var(--color-base);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-title mark {
+  background: transparent;
+  color: var(--color-progressive);
+  font-weight: 800;
+}
+
+.suggestion-desc {
+  font-size: 1.2rem;
+  color: var(--color-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-loading,
+.suggestion-empty {
+  padding: 1.4rem;
+  text-align: center;
+  color: var(--color-subtle);
+  font-size: 1.3rem;
+}
+
+/* ==========================================================
+   LANGUAGE LIST ACCORDION & DRAWER
+   ========================================================== */
+.all-languages-nav {
+  margin: 1.8rem auto 3.6rem;
+  max-width: 900px;
+}
+
+.lang-list-button-wrapper {
+  text-align: center;
+}
+
+.lang-list-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: var(--bg-color-interactive-subtle);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+  padding: 0.7rem 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-progressive);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.lang-list-button:hover {
+  background-color: var(--bg-color-interactive-hover);
+  border-color: var(--color-progressive);
+}
+
+.lang-list-button .chevron-icon {
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.lang-list-button[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Expandable Drawer Container */
+.lang-list-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.3s ease;
+  background-color: var(--bg-color-interactive-subtle);
+  border-radius: var(--border-radius-card);
+  margin-top: 0;
+  text-align: left;
+}
+
+.lang-list-container.open {
+  max-height: 1800px;
+  opacity: 1;
+  margin-top: 1.6rem;
+  border: 1px solid var(--border-color-subtle);
+  padding: 2.4rem;
+}
+
+.lang-list-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.bookshelf-group {
+  width: 100%;
+}
+
+.bookshelf-heading {
+  display: flex;
+  align-items: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-subtle);
+  margin-bottom: 1.2rem;
+}
+
+.bookshelf-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color-subtle);
+}
+
+.bookshelf-text {
+  padding: 0 1.2rem;
+  white-space: nowrap;
+}
+
+.lang-columns {
+  column-width: 12rem;
+  column-gap: 2rem;
+}
+
+.lang-columns a {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 2.2;
+  break-inside: avoid;
+  color: var(--color-base);
+  transition: color 0.15s ease;
+}
+
+.lang-columns a:hover {
+  color: var(--color-progressive);
+  text-decoration: underline;
+}
+
+.bookshelf-others {
+  text-align: center;
+  padding-top: 0.8rem;
+}
+
+.other-languages-link {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-progressive);
+}
+
+/* ==========================================================
+   FOOTER: WIKIMEDIA FOUNDATION & SISTER PROJECTS
+   ========================================================== */
+.section-divider {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: none;
+  height: 1px;
+  background-color: var(--border-color-muted);
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--bg-color-base);
+  padding: 3.6rem 2rem 2.4rem;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4rem;
+}
+
+/* Left Sidebar (35%) */
+.footer-sidebar {
+  flex: 0 0 34%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.footer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.footer-card-icon {
+  flex-shrink: 0;
+  padding-top: 0.2rem;
+}
+
+.footer-card-body {
+  flex: 1;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: var(--color-subtle);
+}
+
+.foundation-desc {
+  margin-bottom: 0.6rem;
+}
+
+.foundation-donate a {
+  font-weight: 600;
+  color: var(--color-progressive);
+}
+
+.app-card {
+  background-color: var(--bg-color-interactive-subtle);
+  border: 1px solid var(--border-color-muted);
+  border-radius: var(--border-radius-card);
+  padding: 1.6rem;
+}
+
+.app-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.app-card-title a {
+  color: var(--color-base);
+}
+
+.app-card-title a:hover {
+  color: var(--color-progressive);
+}
+
+.app-card-desc {
+  margin-bottom: 1.2rem;
+  font-size: 1.25rem;
+}
+
+.app-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.badge-link {
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.badge-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+/* Right Sister Projects Grid (65%) */
+.footer-projects {
+  flex: 1;
+}
+
+.other-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem 1.4rem;
+}
+
+.other-project-item {
+  position: relative;
+}
+
+.other-project-link {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.8rem;
+  border-radius: var(--border-radius-base);
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.other-project-link:hover {
+  text-decoration: none;
+  background-color: var(--bg-color-interactive-hover);
+  transform: translateY(-1px);
+}
+
+.other-project-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.other-project-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.other-project-title {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-base);
+  line-height: 1.25;
+}
+
+.other-project-link:hover .other-project-title {
+  color: var(--color-progressive);
+}
+
+.other-project-tagline {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--color-subtle);
+  line-height: 1.35;
+}
+
+/* Bottom Legal Section */
+.footer-legal {
+  max-width: 1120px;
+  margin: 3.2rem auto 0;
+  text-align: center;
+}
+
+.legal-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color-muted);
+  margin-bottom: 2rem;
+}
+
+.site-license {
+  font-size: 1.25rem;
+  color: var(--color-subtle);
+  line-height: 1.8;
+}
+
+.site-license a {
+  color: var(--color-subtle);
+  text-decoration: underline;
+}
+
+.site-license a:hover {
+  color: var(--color-progressive);
+}
+
+.site-license .separator {
+  margin: 0 0.8rem;
+  opacity: 0.6;
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================== */
+@media (max-width: 860px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  
+  .footer-sidebar {
+    flex: 1 1 100%;
+  }
+  
+  .other-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .central-featured {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .central-featured-logo-container {
+    position: static;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+  
+  .central-featured-lang {
+    position: static;
+    width: 85%;
+    text-align: center !important;
+  }
+  
+  .central-featured-lang .link-box {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  
+  .other-projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .app-card {
+    text-align: center;
+  }
+  
+  .app-badges-row {
+    justify-content: center;
+  }
+}

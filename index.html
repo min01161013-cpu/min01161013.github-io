@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wikipedia - 우리 모두의 백과사전</title>
+  <meta name="description" content="위키백과는 전 세계의 자원봉사자들이 함께 만들어가는 자유로운 온라인 백과사전입니다.">
+  <link rel="icon" href="assets/Wikipedia-logo-v2.png" type="image/png">
+
+  <!-- Google Fonts: Linux Libertine style serif & clean Korean fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="www-wikipedia-org">
+
+  <!-- Top bar controls (Theme toggle & external links) -->
+  <header class="top-nav-bar">
+    <div class="top-nav-container">
+      <div class="top-nav-badge">
+        <span class="live-dot"></span> 포털 허브
+      </div>
+      <div class="top-nav-actions">
+        <button id="themeToggleBtn" class="top-nav-btn" title="다크 모드 전환" aria-label="테마 전환">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="theme-btn-label">테마 변경</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Central Text & Logo Header -->
+    <div class="central-textlogo">
+      <div class="logo-wrapper">
+        <h1 class="central-title">
+          <span class="sprite svg-Wikipedia_wordmark" aria-label="Wikipedia">Wikipedia</span>
+        </h1>
+        <strong class="localized-slogan">우리 모두의 백과사전</strong>
+      </div>
+    </div>
+
+    <!-- 10 Featured Languages in an arc around the globe -->
+    <nav class="central-featured" aria-label="주요 언어">
+      <!-- Central Wikipedia Puzzle Globe Logo -->
+      <div class="central-featured-logo-container">
+        <img
+          class="central-featured-logo"
+          src="assets/Wikipedia-logo-v2.png"
+          srcset="assets/Wikipedia-logo-v2@2x.png 2x"
+          width="200"
+          height="183"
+          alt="Wikipedia Globe Logo"
+        >
+      </div>
+
+      <!-- #1. 한국어 (Top-Left) -->
+      <div class="central-featured-lang lang1" lang="ko">
+        <a id="link-box-ko" href="https://ko.wikipedia.org/" class="link-box" title="한국어 — 위키백과 — 우리 모두의 백과사전">
+          <strong>한국어</strong>
+          <small>766,000+ <span>문서</span></small>
+        </a>
+      </div>
+
+      <!-- #2. English (Top-Right) -->
+      <div class="central-featured-lang lang2" lang="en">
+        <a id="link-box-en" href="https://en.wikipedia.org/" class="link-box" title="English — Wikipedia — The Free Encyclopedia">
+          <strong>English</strong>
+          <small>7,245,000+ <span>articles</span></small>
+        </a>
+      </div>
+
+      <!-- #3. 日本語 (Mid-Top-Left) -->
+      <div class="central-featured-lang lang3" lang="ja">
+        <a id="link-box-ja" href="https://ja.wikipedia.org/" class="link-box" title="日本語 — ウィキペディア — フリー百科事典">
+          <strong>日本語</strong>
+          <small>1,520,000+ <span>記事</span></small>
+        </a>
+      </div>
+
+      <!-- #4. Deutsch (Mid-Top-Right) -->
+      <div class="central-featured-lang lang4" lang="de">
+        <a id="link-box-de" href="https://de.wikipedia.org/" class="link-box" title="Deutsch — Wikipedia — Die freie Enzyklopädie">
+          <strong>Deutsch</strong>
+          <small>3.154.000+ <span>Artikel</span></small>
+        </a>
+      </div>
+
+      <!-- #5. Français (Mid-Left) -->
+      <div class="central-featured-lang lang5" lang="fr">
+        <a id="link-box-fr" href="https://fr.wikipedia.org/" class="link-box" title="Français — Wikipédia — L’encyclopédie libre">
+          <strong>Français</strong>
+          <small>2 781 000+ <span>articles</span></small>
+        </a>
+      </div>
+
+      <!-- #6. Русский (Mid-Right) -->
+      <div class="central-featured-lang lang6" lang="ru">
+        <a id="link-box-ru" href="https://ru.wikipedia.org/" class="link-box" title="Русский — Википедия — Свободная энциклопедия">
+          <strong>Русский</strong>
+          <small>2 119 000+ <span>статей</span></small>
+        </a>
+      </div>
+
+      <!-- #7. Español (Mid-Bottom-Left) -->
+      <div class="central-featured-lang lang7" lang="es">
+        <a id="link-box-es" href="https://es.wikipedia.org/" class="link-box" title="Español — Wikipedia — La enciclopedia libre">
+          <strong>Español</strong>
+          <small>2.139.000+ <span>artículos</span></small>
+        </a>
+      </div>
+
+      <!-- #8. Italiano (Mid-Bottom-Right) -->
+      <div class="central-featured-lang lang8" lang="it">
+        <a id="link-box-it" href="https://it.wikipedia.org/" class="link-box" title="Italiano — Wikipedia — L'enciclopedia libera">
+          <strong>Italiano</strong>
+          <small>1.988.000+ <span>voci</span></small>
+        </a>
+      </div>
+
+      <!-- #9. 中文 (Bottom-Left) -->
+      <div class="central-featured-lang lang9" lang="zh">
+        <a id="link-box-zh" href="https://zh.wikipedia.org/" class="link-box" title="中文 — 维基百科 / 維基百科 — 自由的百科全书">
+          <strong>中文</strong>
+          <small>1,558,000+ <span>条目 / 條目</span></small>
+        </a>
+      </div>
+
+      <!-- #10. Polski (Bottom-Right) -->
+      <div class="central-featured-lang lang10" lang="pl">
+        <a id="link-box-pl" href="https://pl.wikipedia.org/" class="link-box" title="Polski — Wikipedia — Wolna encyklopedia">
+          <strong>Polski</strong>
+          <small>1 709 000+ <span>haseł</span></small>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Search Section -->
+    <div class="search-container" role="search">
+      <form id="search-form" class="search-form" action="https://ko.wikipedia.org/wiki/Special:Search" method="get">
+        <div class="search-input-wrapper" id="searchInputWrapper">
+          <input
+            id="searchInput"
+            name="search"
+            type="search"
+            autocomplete="off"
+            autofocus
+            placeholder="위키백과 검색"
+            aria-label="위키백과 검색"
+          >
+
+          <!-- Language Selector inside Input -->
+          <div class="search-lang-select-container">
+            <select id="searchLanguage" name="language" aria-label="검색 언어 선택">
+              <option value="ko" selected>KO</option>
+              <option value="en">EN</option>
+              <option value="ja">JA</option>
+              <option value="de">DE</option>
+              <option value="fr">FR</option>
+              <option value="es">ES</option>
+              <option value="ru">RU</option>
+              <option value="it">IT</option>
+              <option value="zh">ZH</option>
+              <option value="pl">PL</option>
+              <option value="pt">PT</option>
+              <option value="nl">NL</option>
+              <option value="sv">SV</option>
+              <option value="vi">VI</option>
+              <option value="ar">AR</option>
+            </select>
+            <i class="sprite svg-arrow-down select-arrow-icon"></i>
+          </div>
+
+          <!-- Blue Search Submit Button -->
+          <button type="submit" class="pure-button-primary-progressive" id="searchBtn" aria-label="검색">
+            <i class="sprite svg-search-icon"></i>
+          </button>
+        </div>
+
+        <!-- Live Typeahead Suggestions Dropdown -->
+        <div id="searchSuggestions" class="search-suggestions" hidden>
+          <div class="suggestions-list" id="suggestionsList"></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Read Wikipedia in your language Accordion Button -->
+    <nav class="all-languages-nav" aria-label="모든 언어 목록">
+      <div class="lang-list-button-wrapper">
+        <button id="langListToggleBtn" class="lang-list-button" aria-expanded="false" aria-controls="langListDrawer">
+          <i class="sprite svg-language-icon"></i>
+          <span class="lang-list-button-text">내 언어로 위키백과 읽기</span>
+          <i class="sprite svg-arrow-down-blue chevron-icon"></i>
+        </button>
+      </div>
+
+      <!-- Expandable Drawer for All Languages -->
+      <div id="langListDrawer" class="lang-list-container">
+        <div class="lang-list-content">
+          <!-- 1,000,000+ Articles -->
+          <div class="bookshelf-group">
+            <h2 class="bookshelf-heading">
+              <span class="bookshelf-line"></span>
+              <span class="bookshelf-text">1,000,000+ 문서</span>
+              <span class="bookshelf-line"></span>
+            </h2>
+            <div class="lang-columns">
+              <a href="https://ar.wikipedia.org/" lang="ar"><bdi dir="rtl">العربية</bdi></a>
+              <a href="https://de.wikipedia.org/" lang="de">Deutsch</a>
+              <a href="https://en.wikipedia.org/" lang="en">English</a>
+              <a href="https://es.wikipedia.org/" lang="es">Español</a>
+              <a href="https://fa.wikipedia.org/" lang="fa"><bdi dir="rtl">فارسی</bdi></a>
+              <a href="https://fr.wikipedia.org/" lang="fr">Français</a>
+              <a href="https://it.wikipedia.org/" lang="it">Italiano</a>
+              <a href="https://arz.wikipedia.org/" lang="arz"><bdi dir="rtl">مصرى</bdi></a>
+              <a href="https://nl.wikipedia.org/" lang="nl">Nederlands</a>
+              <a href="https://ja.wikipedia.org/" lang="ja">日本語</a>
+              <a href="https://pl.wikipedia.org/" lang="pl">Polski</a>
+              <a href="https://pt.wikipedia.org/" lang="pt">Português</a>
+              <a href="https://ru.wikipedia.org/" lang="ru">Русский</a>
+              <a href="https://sv.wikipedia.org/" lang="sv">Svenska</a>
+              <a href="https://uk.wikipedia.org/" lang="uk">Українська</a>
+              <a href="https://vi.wikipedia.org/" lang="vi">Tiếng Việt</a>
+              <a href="https://zh.wikipedia.org/" lang="zh">中文</a>
+            </div>
+          </div>
+
+          <!-- 100,000+ Articles -->
+          <div class="bookshelf-group">
+            <h2 class="bookshelf-heading">
+              <span class="bookshelf-line"></span>
+              <span class="bookshelf-text">100,000+ 문서</span>
+              <span class="bookshelf-line"></span>
+            </h2>
+            <div class="lang-columns">
+              <a href="https://ko.wikipedia.org/" lang="ko">한국어</a>
+              <a href="https://bg.wikipedia.org/" lang="bg">Български</a>
+              <a href="https://ca.wikipedia.org/" lang="ca">Català</a>
+              <a href="https://cs.wikipedia.org/" lang="cs">Čeština</a>
+              <a href="https://da.wikipedia.org/" lang="da">Dansk</a>
+              <a href="https://et.wikipedia.org/" lang="et">Eesti</a>
+              <a href="https://el.wikipedia.org/" lang="el">Ελληνικά</a>
+              <a href="https://eu.wikipedia.org/" lang="eu">Euskara</a>
+              <a href="https://gl.wikipedia.org/" lang="gl">Galego</a>
+              <a href="https://he.wikipedia.org/" lang="he"><bdi dir="rtl">עברית</bdi></a>
+              <a href="https://hi.wikipedia.org/" lang="hi">हिन्दी</a>
+              <a href="https://hr.wikipedia.org/" lang="hr">Hrvatski</a>
+              <a href="https://id.wikipedia.org/" lang="id">Bahasa Indonesia</a>
+              <a href="https://la.wikipedia.org/" lang="la">Latina</a>
+              <a href="https://lt.wikipedia.org/" lang="lt">Lietuvių</a>
+              <a href="https://hu.wikipedia.org/" lang="hu">Magyar</a>
+              <a href="https://ms.wikipedia.org/" lang="ms">Bahasa Melayu</a>
+              <a href="https://no.wikipedia.org/" lang="no">Norsk (bokmål)</a>
+              <a href="https://ro.wikipedia.org/" lang="ro">Română</a>
+              <a href="https://sk.wikipedia.org/" lang="sk">Slovenčina</a>
+              <a href="https://sl.wikipedia.org/" lang="sl">Slovenščina</a>
+              <a href="https://sr.wikipedia.org/" lang="sr">Српски / Srpski</a>
+              <a href="https://fi.wikipedia.org/" lang="fi">Suomi</a>
+              <a href="https://th.wikipedia.org/" lang="th">ภาษาไทย</a>
+              <a href="https://tr.wikipedia.org/" lang="tr">Türkçe</a>
+            </div>
+          </div>
+
+          <!-- Other languages link -->
+          <div class="bookshelf-group bookshelf-others">
+            <a class="other-languages-link" href="https://meta.wikimedia.org/wiki/Special:MyLanguage/List_of_Wikipedias">
+              모든 위키백과 언어 목록 보기 (300개 이상의 언어) &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Divider line -->
+  <hr class="section-divider">
+
+  <!-- Footer Section: Wikimedia Foundation & Mobile App on Left, Sister Projects on Right -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <!-- Left Column: Wikimedia foundation info & App badges -->
+      <aside class="footer-sidebar">
+        <!-- Wikimedia Foundation Card -->
+        <div class="footer-card foundation-card">
+          <div class="footer-card-icon">
+            <div class="sprite svg-Wikimedia-logo_black" title="Wikimedia Foundation"></div>
+          </div>
+          <div class="footer-card-body">
+            <p class="foundation-desc">
+              위키백과는 다른 여러 프로젝트들도 운영하는 비영리 단체인 위키미디어 재단이 운영합니다.
+            </p>
+            <p class="foundation-donate">
+              <a href="https://donate.wikimedia.org/?wmf_medium=portal&wmf_campaign=portalFooter&wmf_source=portalFooter" target="_blank" rel="noopener">
+                기부금으로 저희 일을 지원하실 수 있습니다.
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Wikipedia App Download Card -->
+        <div class="footer-card app-card">
+          <div class="footer-card-icon">
+            <div class="sprite svg-wikipedia_app_tile" title="Wikipedia App"></div>
+          </div>
+          <div class="footer-card-body">
+            <h3 class="app-card-title">
+              <a href="https://ko.wikipedia.org/wiki/위키백과_모바일_애플리케이션_목록">
+                안드로이드 또는 iOS용 위키백과 다운로드
+              </a>
+            </h3>
+            <p class="app-card-desc">
+              공식 위키백과 앱을 사용하여 즐겨찾는 문서를 저장하여 오프라인에서 읽고, 읽기 목록을 장치간에 동기화하고, 읽기 환경을 사용자 정의하십시오.
+            </p>
+            <div class="app-badges-row">
+              <a class="badge-link" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=org.wikipedia" title="Google Play Store에서 다운로드">
+                <span class="sprite svg-badge_google_play_store">Google Play Store</span>
+              </a>
+              <a class="badge-link" target="_blank" rel="noopener noreferrer" href="https://itunes.apple.com/app/apple-store/id324715238" title="Apple App Store에서 다운로드">
+                <span class="sprite svg-badge_ios_app_store">Apple App Store</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Sister Projects Grid (3 columns x 3 rows) -->
+      <section class="footer-projects" aria-label="위키미디어 자매 프로젝트">
+        <div class="other-projects-grid">
+          <!-- 1. 공용 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://commons.wikimedia.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Commons-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">공용</span>
+                <span class="other-project-tagline">자유 미디어 저장소</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 2. 위키여행 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wikivoyage.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikivoyage-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키여행</span>
+                <span class="other-project-tagline">자유 여행 가이드</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 3. 위키낱말사전 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wiktionary.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wiktionary-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키낱말사전</span>
+                <span class="other-project-tagline">말과 글의 누리</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 4. 위키책 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wikibooks.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikibooks-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키책</span>
+                <span class="other-project-tagline">자유로운 생각과 배움</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 5. 위키데이터 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://www.wikidata.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikidata-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키데이터</span>
+                <span class="other-project-tagline">자유 지식 베이스</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 6. 위키배움터 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wikiversity.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikiversity-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키배움터</span>
+                <span class="other-project-tagline">무료 학습 자원</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 7. 위키인용집 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wikiquote.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikiquote-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키인용집</span>
+                <span class="other-project-tagline">자유 인용 모음집</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 8. 미디어위키 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://www.mediawiki.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-MediaWiki-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">미디어위키</span>
+                <span class="other-project-tagline">자유 개방 소프트웨어</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 9. 위키문헌 -->
+          <div class="other-project-item">
+            <a class="other-project-link" href="https://ko.wikisource.org/" target="_blank" rel="noopener">
+              <div class="other-project-icon">
+                <div class="sprite svg-Wikisource-logo_sister"></div>
+              </div>
+              <div class="other-project-text">
+                <span class="other-project-title">위키문헌</span>
+                <span class="other-project-tagline">무료 콘텐츠 라이브러리</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom Legal & Privacy Links -->
+    <div class="footer-legal">
+      <hr class="legal-divider">
+      <p class="site-license">
+        <small>이 페이지는 <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">크리에이티브 커먼즈 저작자표시-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</small>
+        <span class="separator">•</span>
+        <small><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use/ko" target="_blank" rel="noopener">이용 약관</a></small>
+        <span class="separator">•</span>
+        <small><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy/ko" target="_blank" rel="noopener">개인정보 보호정책</a></small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
